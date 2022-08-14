@@ -7,7 +7,7 @@ export default {
 		try {
 			const result = await minecraft.ping({ host: "mc.geopoliticalsmp.com" });
 			await interaction.editReply({ embeds: [new EmbedBuilder({ color: 0x0000a5, title: "🟢 GeopoliticalSMP", fields: [{ name: "Players", value: result.players.online + "/" + result.players.max }] })] });
-		} catch (error) {
+		} catch {
 			await interaction.editReply({ embeds: [new EmbedBuilder({ title: "🔴 GeopoliticalSMP" })] });
 		}
 	},
