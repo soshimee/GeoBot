@@ -11,8 +11,6 @@ logger.level = "debug";
 
 const client = new Client({ intents: [] });
 
-const commandList = [];
-
 client.once("ready", async () => {
 	logger.info("Ready!");
 	const commands = [];
@@ -20,7 +18,6 @@ client.once("ready", async () => {
 		const command = (await import("./commands/" + file)).default;
 		commands.push(command);
 	}
-	commands.forEach(command => commandList.push({ name: command.slashCommand.name, description: command.slashCommand.description }));
 	const slashCommands = commands.map(command => command.slashCommand.toJSON());
 	await rest.put(Routes.applicationGuildCommands(client.user.id, "985997942928318474"), { body: slashCommands });
 	logger.info("Registered slash commands.")
@@ -33,7 +30,7 @@ client.on("interactionCreate", async interaction => {
 
 	const command = (await import("./commands/" + interaction.commandName + ".js")).default;
 
-	await command.execute(interaction, { commandList });
+	await command.execute(interaction);
 });
 
 process.on("uncaughtException", error => {
