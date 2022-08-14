@@ -3,11 +3,12 @@
 		"@discordjs/rest": "^1.0.1",
 		"discord.js": "^14.2.0",
 		"log4js": "^6.6.1",
-		"minecraft-protocol": "^1.35.1"
+		"minecraft-protocol": "^1.35.1",
+		"node-fetch": "^3.2.10"
 	},
 	"type": "module",
 	"name": "geobot",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "GPSMP likes you",
 	"main": "index.js",
 	"scripts": {
